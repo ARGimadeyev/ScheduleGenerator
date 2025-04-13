@@ -48,7 +48,6 @@ with open('data/ListLesson.txt', 'w', encoding='utf-8') as f:
         for item in row:
             f.write(str(item) + ' ')
         f.write('\n')
-s.pop(3)
 with open('data/maps/teachers.json', 'w', encoding='utf-8') as f:
     json.dump(t, f, ensure_ascii=False, indent=2)
 

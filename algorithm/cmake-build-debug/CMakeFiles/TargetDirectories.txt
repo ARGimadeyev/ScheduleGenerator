@@ -1,3 +1,0 @@
-C:/Users/Amir Gimadeev/CLionProjects/ScheduleGenerator/cmake-build-debug/CMakeFiles/ScheduleGenerator.dir
-C:/Users/Amir Gimadeev/CLionProjects/ScheduleGenerator/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Amir Gimadeev/CLionProjects/ScheduleGenerator/cmake-build-debug/CMakeFiles/rebuild_cache.dir

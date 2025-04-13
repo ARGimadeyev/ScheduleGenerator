@@ -16,13 +16,13 @@ constexpr int CLASSES_COUNT = 5;
 constexpr int CLASSES = (11 - 7) + 1;
 constexpr int TOTAL_CLASSES = CLASSES * CLASSES_COUNT;
 
-constexpr string SCHEDULE_NAME = "Schedule";
-constexpr string TEACHERS_HOURS_NAME = "ListLesson";
+const string SCHEDULE_NAME = "Schedule";
+const string TEACHERS_HOURS_NAME = "ListLesson";
 constexpr long long INF = 1e18;
 
 
 constexpr long long INTERSECT = 1e9;
-constexpr int long long SKIP = 4e4;
+constexpr long long SKIP = 4e4;
 
 const map<int, vector<set<int> > > lessonToGroups = {
     {1, {{21, 22}}},
@@ -123,6 +123,52 @@ public:
 
     void recnt() {
         cost = 0;
+        for (int j = 0; j < TOTAL_LESSONS; ++j) {
+            map<int, vector<set<int> > > teacherToGroups;
+            for (const auto &[key,l]: lessonToGroups) {
+                teacherToGroups[key].resize(l.size());
+            }
+
+            set<int> st;
+            for (int i = 0; i < TOTAL_CLASSES; ++i) {
+                for (int u: matrix[i][j].teachers) {
+                    auto it = lessonToGroups.find(matrix[i][j].lesson);
+                    if (it == lessonToGroups.end()) {
+                        if (st.find(u) != st.end()) {
+                            cost += INTERSECT;
+                        }
+                        st.insert(u);
+                        continue;
+                    }
+                    int indx = 0;
+                    bool b = true;
+                    for (const auto &set: it->second) {
+                        if (set.find(i) != set.end()) {
+                            teacherToGroups[matrix[i][j].lesson][indx].insert(u);
+                            b = false;
+                            break;
+                        }
+                        indx++;
+                    }
+                    if (b) {
+                        if (st.find(u) != st.end()) {
+                            cost += INTERSECT;
+                        }
+                        st.insert(u);
+                    }
+                }
+            }
+            for (const auto &[k,sets]: teacherToGroups) {
+                for (const auto &set: sets) {
+                    for (int u: set) {
+                        if (st.find(u) != st.end()) {
+                            cost += INTERSECT;
+                        }
+                        st.insert(u);
+                    }
+                }
+            }
+        }
         for (int i = 0; i < TOTAL_CLASSES; ++i) {
             map<Lesson, int> col;
             for (int j = 0; j < TOTAL_LESSONS; ++j) {
@@ -164,8 +210,13 @@ public:
                     if (f.teachers.empty() && k <= 5) {
                         cost += SKIP;
                     }
-                    if (f.teachers.empty() && k < 4 && j == 5) {
-                        cost += INTERSECT;
+                    if (j == 5) {
+                        if (f.teachers.empty() && k < 4) {
+                            cost += 4000000;
+                        }
+                        if (!f.teachers.empty() && k >= 6) {
+                            cost += INTERSECT;
+                        }
                     }
                 }
             }
@@ -192,13 +243,13 @@ public:
         for (int i = 0; i < TOTAL_CLASSES; ++i) {
             for (int j = 0; j < TOTAL_LESSONS; ++j) {
                 int len;
-                cin >> len;
+                fin >> len;
                 vector<int> teachers(len);
                 for (int k = 0; k < len; ++k) {
                     fin >> teachers[k];
                 }
-                fin >> subject >> Class >> dop;
-                matrix[i][j] = Lesson(teachers, subject, Class, dop);
+                fin >> subject >> dop;
+                matrix[i][j] = Lesson(teachers, subject, i, dop);
             }
         }
     }
@@ -308,7 +359,8 @@ public:
         }
     }
 
-private:
+private
+:
     static int classToIndx(string s) {
         int clas = 0, num = int(s[s.size() - 1] - '0');
         if (s.size() == 4) {

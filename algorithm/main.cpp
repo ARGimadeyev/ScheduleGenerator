@@ -15,7 +15,7 @@ ld rnd() {
     return ld(rng()) / (UINT_MAX);
 }
 
-constexpr double COOLING_RATE = 0.98;
+constexpr double COOLING_RATE = 0.99998;
 constexpr double MIN_COOL = 1e-2;
 
 int main() {
@@ -32,9 +32,9 @@ int main() {
     now.recnt();
     Schedule best = now;
 
-    ld T = 1'000;
+    ld T = 100'000'000;
 
-    for (; T >= MIN_COOL; T *= COOLING_RATE) {
+    for (int k = 0; T >= MIN_COOL; T *= COOLING_RATE, k++) {
         Schedule nw = now;
 
         int Class = random_class(rng);
@@ -48,10 +48,12 @@ int main() {
                 best = now;
             }
         }
-        if (now.cost - best.cost > 1e10) now = best;
-        cerr << T << ' ' << best.cost << ' ' << now.cost << '\n';
+        if (k % 100 == 0)
+            cerr << T << ' ' << best.cost << ' ' << now.cost << '\n';
     }
     cout << best.cost << endl;
     best.print();
     return 0;
 }
+
+//77034145000

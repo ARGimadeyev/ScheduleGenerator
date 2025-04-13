@@ -2,16 +2,16 @@ import json
 import re
 from collections import defaultdict
 
-with open('../data/maps/subjects.json', 'r', encoding='utf-8') as f:
+with open('data/maps/subjects.json', 'r', encoding='utf-8') as f:
     subjects = json.load(f)
 
-with open('../data/maps/teachers.json', 'r', encoding='utf-8') as f:
+with open('data/maps/teachers.json', 'r', encoding='utf-8') as f:
     teachers = json.load(f)
 
-with open('../data/maps/subject_colors.json', 'r', encoding='utf-8') as f:
+with open('data/maps/subject_colors.json', 'r', encoding='utf-8') as f:
     subject_colors = json.load(f)
 
-with open('../data/maps/subject_short.json', 'r', encoding='utf-8') as f:
+with open('data/maps/subject_short.json', 'r', encoding='utf-8') as f:
     subject_short = json.load(f)
 
 
@@ -20,7 +20,7 @@ def shorten_subject(name):
 
 
 schedule_data = []
-with open('../data/Schedule.txt', 'r', encoding='utf-8') as f:
+with open('data/Schedule.txt', 'r', encoding='utf-8') as f:
     for line in f:
         parts = list(map(int, line.strip().split()))
         if parts: schedule_data.append(parts)
@@ -176,10 +176,10 @@ for class_idx in range(TOTAL_CLASSES):
     classHtml += '</table>'
 
     classHtml += '</body></html>'
-    with open(f'pages/{class_num}.html', 'w', encoding='utf-8') as f:
+    with open(f'front/pages/{class_num}.html', 'w', encoding='utf-8') as f:
         f.write(classHtml)
 
 html += '</body></html>'
 
-with open('pages/schedule.html', 'w', encoding='utf-8') as f:
+with open('front/pages/schedule.html', 'w', encoding='utf-8') as f:
     f.write(html)

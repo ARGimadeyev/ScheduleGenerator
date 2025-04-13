@@ -1,0 +1,168 @@
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #ecf0f1;
+    --transition-speed: 0.3s;
+}
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+.main-header {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: all var(--transition-speed);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.main-header h1 {
+    font-size: 8em;
+    margin: 0;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    padding: 120vh 20px 50px;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.general-button {
+    display: block;
+    width: 300px;
+    margin: 20px auto;
+    padding: 15px;
+    text-align: center;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 1.2em;
+    transition: transform 0.2s;
+    position: relative;
+    z-index: 500;
+}
+
+.classes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.class-button {
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.class-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Кнопка гамбургер */
+.hamburger {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 10010;
+    cursor: pointer;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    transition: right var(--transition-speed);
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background: var(--primary-color);
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* Боковая панель */
+.sidebar {
+    position: fixed;
+    right: -320px;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 20px;
+}
+
+.sidebar.active {
+    right: 0 !important;
+}
+
+.teacher-general-btn {
+    display: block;
+    padding: 15px 25px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white !important;
+    border-radius: 30px;
+    font-size: 1.1em;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.teachers-list {
+    max-height: calc(100vh - 150px);
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.teacher-button {
+    display: block;
+    padding: 12px;
+    margin: 8px 0;
+    background: #f8f9fa;
+    color: #2c3e50;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.2s;
+    mix-blend-mode: multiply;
+    font-weight: 600;
+}
+
+body.scrolled .main-header {
+    top: 20px;
+    transform: translateX(-50%) scale(0.5);
+    opacity: 0.7;
+}
+
+body.scrolled .content {
+    opacity: 1;
+}
+
+/* Прокрутка */
+.teachers-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.teachers-list::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
