@@ -19,6 +19,7 @@ constexpr double COOLING_RATE = 0.98;
 constexpr double MIN_COOL = 1e-2;
 
 int main() {
+    cout << "Hello!\n";
     cout << "If you want to improve the schedule you have already created (without intersections), enter: 1" << endl;
     Schedule now;
     int num;
@@ -29,7 +30,6 @@ int main() {
         now.readNew();
     }
     now.recnt();
-    now.print();
     Schedule best = now;
 
     ld T = 1'000;

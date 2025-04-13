@@ -27,6 +27,7 @@ constexpr int long long SKIP = 4e4;
 const map<int, vector<set<int> > > lessonToGroups = {
     {1, {{21, 22}}},
     {2, {{15, 16}, {18, 19}, {0, 3, 4}, {1, 2}, {5, 6, 7}, {8, 9}, {10, 11}, {12, 13}}},
+    {3, {{15, 16}, {18, 19}, {0, 3, 4}, {1, 2}, {5, 6, 7}, {8, 9}, {10, 11}, {12, 13}}},
     {4, {{15, 16, 17}, {18, 19}, {0, 1}, {2, 3, 4}, {5, 6}, {7, 8, 9}, {10, 11}, {12, 13}}},
     {5, {{22, 23}, {5, 6}}},
     {6, {{20, 22, 23, 24}, {5, 6}, {12, 13}}},
@@ -215,6 +216,10 @@ public:
             bool found = false;
             auto it = lessonToGroups.find(lesson);
             if (teacher == 19) continue;
+            if (Class >= classToIndx("11.1")) {
+                if (lesson != 1 && lesson != 5 && lesson != 6 && lesson != 20)
+                    continue;
+            }
             if (it != lessonToGroups.end()) {
                 int indx = 0;
                 group[lesson].resize(it->second.size());
@@ -273,13 +278,34 @@ public:
                         }
                     }
                     if (b == false) {
-                        cout << "UNLUCK((((\n";
+                        cout << "UNLUCK in read((((\n";
                         exit(0);
                     }
                 }
             }
         }
-        //
+        for (const auto &[teachers,lesson,Class,dop]: rubish) {
+            bool found = false;
+            for (int k = 0; k < TOTAL_LESSONS; ++k) {
+                if (matrix[Class][k].lesson != -1) continue;
+                matrix[Class][k] = {teachers, lesson, Class, dop};
+                found = true;
+                break;
+            }
+            if (!found) {
+                found = false;
+                for (int k = 0; k < TOTAL_LESSONS; ++k) {
+                    if (matrix[Class][k].lesson != -1) continue;
+                    matrix[Class][k] = {teachers, lesson, Class, dop};
+                    found = true;
+                    break;
+                }
+                if (!found) {
+                    cerr << "UNLUCK in write((((\n";
+                    exit(0);
+                }
+            }
+        }
     }
 
 private:

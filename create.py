@@ -43,15 +43,14 @@ for i in range(2, sheet.max_row + 1):
         for h in range(int(col)):
             result.append([teachers[teacher], subjects[subject], classes[j], dop])
     lastTeacher = teacher
-subjects.pop("Родная литература")
 with open('data/ListLesson.txt', 'w', encoding='utf-8') as f:
     for row in result:
         for item in row:
             f.write(str(item) + ' ')
         f.write('\n')
 s.pop(3)
-with open('data/teachers.json', 'w', encoding='utf-8') as f:
+with open('data/maps/teachers.json', 'w', encoding='utf-8') as f:
     json.dump(t, f, ensure_ascii=False, indent=2)
 
-with open('data/subjects.json', 'w', encoding='utf-8') as f:
+with open('data/maps/subjects.json', 'w', encoding='utf-8') as f:
     json.dump(s, f, ensure_ascii=False, indent=2)
