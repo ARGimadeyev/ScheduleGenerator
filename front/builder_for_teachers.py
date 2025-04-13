@@ -56,12 +56,30 @@ for class_idx in range(25):
                 })
 
 # Шаблон HTML
+# ... (импорты и загрузка данных остаются без изменений) ...
+
 HTML_TEMPLATE = '''
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <style>
+        .back-button {{
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }}
+        .back-button:hover {{
+            transform: scale(1.05);
+        }}
         .teacher-table {{
             margin: 20px;
             border-collapse: collapse;
@@ -76,7 +94,7 @@ HTML_TEMPLATE = '''
             transition: all 0.3s;
             min-width: 100px;
             height: 60px;
-            cursor: pointer;
+            background-color: #f8f9fa; /* Одинаковый фон для всех ячеек */
         }}
         .class {{
             font-weight: 800;
@@ -88,10 +106,14 @@ HTML_TEMPLATE = '''
             color: #444;
             letter-spacing: -0.5px;
         }}
-        td:hover {{
+        td[data-has-content="true"]:hover {{
             transform: scale(1.8);
             z-index: 100;
             box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            cursor: pointer;
+        }}
+        td:not([data-has-content="true"]) {{
+            cursor: default !important;
         }}
         .full-info {{
             display: none;
@@ -117,7 +139,8 @@ HTML_TEMPLATE = '''
     </style>
 </head>
 <body>
-{content}
+    <a href="../../index.html" class="back-button">← Назад</a>
+    {content}
 </body>
 </html>
 '''
@@ -142,7 +165,7 @@ for teacher, schedule in teacher_schedules.items():
                         f'<div class="subject">{l["subject"]}</div>'
                     )
                 cell = f'''
-                <td style="background-color:{lessons[0]['color']}33">
+                <td data-has-content="true">
                     {''.join(content)}
                     <div class="full-info">
                         <div style="font-size:16px;margin-bottom:6px;">{l['class']}</div>
@@ -151,7 +174,7 @@ for teacher, schedule in teacher_schedules.items():
                 </td>
                 '''
             else:
-                cell = '<td style="background-color:#f8f9fa">-</td>'
+                cell = '<td>-</td>'
             teacher_html += cell
         teacher_html += '</tr>'
     teacher_html += '</table>'

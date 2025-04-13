@@ -2,7 +2,7 @@ import json
 from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 
-wb = load_workbook('112.xlsx', data_only=True)
+wb = load_workbook('data/112.xlsx', data_only=True)
 
 sheet = wb.active
 classes = dict()
