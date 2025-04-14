@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sidebar = document.getElementById('sidebar');
     let isOpen = false;
 
-    // Яркие цвета для учителей
+    // Цвета для учителей
     const stringToColor = (str) => {
         let hash = 0;
         for (let i = 0; i < str.length; i++) {
@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const hue = Math.abs(hash % 360);
 
         // Фиксированные параметры для пастельных тонов
-        const saturation = 60; // Уменьшена насыщенность
-        const lightness = 85; // Увеличена яркость
+        const saturation = 60;
+        const lightness = 85;
 
         // Автокоррекция для тёмных оттенков
         const safeHue = hue < 30 || hue > 330 ? (hue + 150) % 360 : hue;

@@ -26,6 +26,7 @@ for i in range(2, sheet.max_row + 1):
     teacher = str(teacher).strip()
     if subject not in subjects:
         subjects[subject] = numSub
+        if (numSub == 3): subjects[subject] = 2
         s[numSub] = subject
         numSub += 1
     if teacher not in teachers:

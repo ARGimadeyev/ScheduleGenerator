@@ -15,7 +15,7 @@ ld rnd() {
     return ld(rng()) / (UINT_MAX);
 }
 
-constexpr double COOLING_RATE = 0.99998;
+constexpr double COOLING_RATE = 0.99987;
 constexpr double MIN_COOL = 1e-2;
 
 int main() {

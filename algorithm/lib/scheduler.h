@@ -22,7 +22,7 @@ constexpr long long INF = 1e18;
 
 
 constexpr long long INTERSECT = 1e9;
-constexpr long long SKIP = 4e4;
+constexpr long long SKIP = 4e6;
 
 const map<int, vector<set<int> > > lessonToGroups = {
     {1, {{21, 22}}},
@@ -181,11 +181,11 @@ public:
                     if (f.teachers.empty()) continue;
                     cl[f]++;
                 }
-                for (auto [k1,col1]: cl) {
+                for (const auto [k1,col1]: cl) {
                     if (col[k1] <= 3) {
-                        cost += 40000 * (col1 > 1);
+                        cost += 400 * (col1 > 1);
                     } else {
-                        cost += (2 * col1 > col[k1] ? 40000 : -1000);
+                        cost += (2 * col1 > col[k1] ? 400 : -10);
                     }
                 }
             }
@@ -200,23 +200,48 @@ public:
                     }
                 }
                 for (auto [k1,col1]: cl) {
-                    cost += 10000 * (col1 < 3);
+                    cost += 1000 * (col1 < 3);
                 }
             }
             //==============================================================
             for (int j = 0; j < DAYS_PER_WEEK; ++j) {
                 for (int k = 0; k < LESSONS_PER_DAY; ++k) {
                     Lesson f = matrix[i][j * LESSONS_PER_DAY + k];
-                    if (f.teachers.empty() && k <= 5) {
+                    if (j != 5 && f.teachers.empty() && k <= 5) {
                         cost += SKIP;
                     }
                     if (j == 5) {
                         if (f.teachers.empty() && k < 4) {
-                            cost += 4000000;
+                            cost += 40000;
                         }
                         if (!f.teachers.empty() && k >= 6) {
                             cost += INTERSECT;
                         }
+                    }
+                }
+            }
+            //==============================================================
+            for (int j = 0; j < DAYS_PER_WEEK; ++j) {
+                for (int k = 0; k < LESSONS_PER_DAY; ++k) {
+                    Lesson f = matrix[i][j * LESSONS_PER_DAY + k];
+                    if (f.teachers.empty()) continue;
+                    bool b = false;
+                    if (k) {
+                        b |= (matrix[i][j * LESSONS_PER_DAY + k].lesson == matrix[i][j * LESSONS_PER_DAY + k - 1].
+                              lesson);
+                    }
+                    if (k + 1 < LESSONS_PER_DAY) {
+                        b |= (matrix[i][j * LESSONS_PER_DAY + k].lesson == matrix[i][j * LESSONS_PER_DAY + k + 1].
+                              lesson);
+                    }
+                    if (f.lesson == 6) {
+                        cost += (1 - b) * 1e6;
+                    }
+                    if (f.lesson == 5) {
+                        cost += (1 - b) * 2e5;
+                    }
+                    if (f.lesson == 1 || f.lesson == 20) {
+                        cost += (1 - b) * 5000;
                     }
                 }
             }
