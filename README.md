@@ -45,17 +45,17 @@
   - Генерация расписаний по заданным параметрам.  
   - Проверка на конфликты ресурсов.  
   - Экспорт результатов в html формат.  
-- Планируемый GUI с возможностями:  
   - Импорт данных из Excel/CSV.  
 
 ---
 
 ### **6. Технологический стек**  
 - Язык: **C++17** (стандарт ISO/IEC 14882:2017).  
-- Библиотеки: STL, Boost (для расширенной функциональности).  
-- Сборка: CMake.  
-- Контроль версий: Git + GitHub.  
-- IDE: Visual Studio/Qt Creator.  
+- Библиотеки: STL.  
+
+- Контроль версий: Git + GitHub.
+- WEB-приложение 
+- IDE: CLion/Pycharm Professional.  
 
 ---
 
@@ -63,14 +63,42 @@
 - Алгоритм использует:  
   - Метод ветвей и границ для поиска решений.  
   - Приоритетную очередь для оптимизации.  
-  - Многопоточность (std::thread).  
+  - Рекурсию
+  - DFS и BFS для генерации соседних решений  
 - Пример структуры данных:  
   ```cpp
-  struct Lesson {
-    string subject;
-    string teacher;
-    int room;
-    TimeSlot time;
+  class Lesson {
+  public:
+    vector<int> teachers;
+    int lesson = -1, Class = -1;
+    bool dop = false;
+
+    Lesson() {
+    }
+
+    Lesson(const vector<int> &teachers, int lesson, int Class, bool dop = false): teachers(teachers), lesson(lesson),
+        Class(Class),
+        dop(dop) {
+    }
+
+    bool operator ==(const Lesson &a) const {
+        if (lesson != a.lesson) return false;
+        if (lesson == -1) return true;
+
+        bool T = false;
+        auto it = lessonToGroups.find(lesson);
+        if (it == lessonToGroups.end()) return false;
+        for (const auto &set: it->second) {
+            if (set.find(Class) == set.end()) continue;
+            T = set.find(Class) != set.end();
+            break;
+        }
+        return T;
+    }
+
+    bool operator <(const Lesson &a) const {
+        return lesson < a.lesson;
+    }
   }; 
   ```
 
@@ -88,7 +116,7 @@
 ### **9. Контакты**  
 - Разработчик: Гимадеев Амир Рамилевич  
 - GitHub: [https://github.com/ARGimadeyev/ScheduleGenerator](https://github.com/ARGimadeyev/ScheduleGenerator)  
-- Email: [ваш email]  
+- Email: guesswho.a.x.a@gmail.com 
 
 ---
 
@@ -98,8 +126,8 @@
 ---
 
 ### **Примечания**  
-1. Текущая версия: консольное приложение (ветка `core-algorithm`).  
-2. GUI будет реализован в отдельном модуле с использованием Qt.  
+1. Текущая версия: веб интерфейс приложение (ветка `NORMAL`).
+2. Готово расписание IT-Лицея КФУ 
 3. Для демонстрации работы доступны unit-тесты и примеры входных данных.  
 
 ---
