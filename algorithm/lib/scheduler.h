@@ -183,9 +183,9 @@ public:
                 }
                 for (const auto [k1,col1]: cl) {
                     if (col[k1] <= 3) {
-                        cost += 400 * (col1 > 1);
+                        cost += 40000 * (col1 > 1);
                     } else {
-                        cost += (2 * col1 > col[k1] ? 400 : -10);
+                        cost += (2 * col1 > col[k1] ? 400000 : -10);
                     }
                 }
             }
