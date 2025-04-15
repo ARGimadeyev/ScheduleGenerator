@@ -15,7 +15,7 @@ ld rnd() {
     return ld(rng()) / (UINT_MAX);
 }
 
-constexpr double COOLING_RATE = 0.99987;
+constexpr double COOLING_RATE = 0.999994;
 constexpr double MIN_COOL = 1e-2;
 
 int main() {
@@ -32,7 +32,7 @@ int main() {
     now.recnt();
     Schedule best = now;
 
-    ld T = 100'000'000;
+    ld T = 1'000'000'000;
 
     for (int k = 0; T >= MIN_COOL; T *= COOLING_RATE, k++) {
         Schedule nw = now;

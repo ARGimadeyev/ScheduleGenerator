@@ -17,6 +17,8 @@ with open('data/maps/teachers.json', 'r', encoding='utf-8') as f:
 with open('data/maps/class_colors.json', 'r') as f:
     class_colors = json.load(f)
 
+with open('data/maps/subject_short.json', 'r', encoding='utf-8') as f:
+    subject_short = json.load(f)
 # Загрузка расписания
 schedule_data = []
 with open('data/Schedule.txt', 'r', encoding='utf-8') as f:
@@ -32,7 +34,7 @@ LESSONS_PER_DAY = 9
 teacher_schedules = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
 
 for class_idx in range(25):
-    class_num = f"{class_idx//5 +7}.{(class_idx%5)+1}"
+    class_num = f"{class_idx // 5 + 7}.{(class_idx % 5) + 1}"
     if class_num == "9.5": continue
 
     for day in range(DAYS_PER_WEEK):
@@ -52,11 +54,9 @@ for class_idx in range(25):
                 teacher_schedules[teacher][day][lesson].append({
                     'class': class_num,
                     'subject': subject,
-                    'color': class_colors[class_num]
+                    'color': class_colors[class_num],
+                    'subject_short': subject_short[subject]
                 })
-
-# Шаблон HTML
-# ... (импорты и загрузка данных остаются без изменений) ...
 
 HTML_TEMPLATE = '''
 <!DOCTYPE html>
@@ -150,26 +150,31 @@ all_teachers_html = '<h1 style="margin-left:50px;">Общее расписани
 for teacher, schedule in teacher_schedules.items():
     teacher_html = f'<h2 style="margin:30px 0 10px 50px;">{teacher}</h2><table class="teacher-table">'
     teacher_html += '<tr><th class="day-header">День</th>' + ''.join(
-        [f'<th class="day-header">Урок {i+1}</th>' for i in range(LESSONS_PER_DAY)]
+        [f'<th class="day-header">Урок {i + 1}</th>' for i in range(LESSONS_PER_DAY)]
     ) + '</tr>'
 
     for day in range(DAYS_PER_WEEK):
-        teacher_html += f'<tr><td class="day-header">День {day+1}</td>'
+        teacher_html += f'<tr><td class="day-header">День {day + 1}</td>'
         for lesson in range(LESSONS_PER_DAY):
             lessons = schedule[day][lesson]
             if lessons:
                 content = []
+                content2 = []
                 for l in lessons:
                     content.append(
                         f'<div class="class" style="color:{l["color"]}">{l["class"]}</div>'
-                        f'<div class="subject">{l["subject"]}</div>'
+                        f'<div class="subject">{l["subject_short"]}</div>'
+                    )
+                    content2.append(
+                        f'''
+                        <div style="font-size:16px;margin-bottom:6px;">{l['class']}</div>
+                        <div style="font-size:14px;color:#666;">{l['subject']}</div>'''
                     )
                 cell = f'''
                 <td data-has-content="true">
                     {''.join(content)}
                     <div class="full-info">
-                        <div style="font-size:16px;margin-bottom:6px;">{l['class']}</div>
-                        <div style="font-size:14px;color:#666;">{l['subject']}</div>
+                        {''.join(content2)}
                     </div>
                 </td>
                 '''
