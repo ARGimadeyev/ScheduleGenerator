@@ -16,14 +16,15 @@ constexpr int CLASSES_COUNT = 5;
 constexpr int CLASSES = (11 - 7) + 1;
 constexpr int TOTAL_CLASSES = CLASSES * CLASSES_COUNT;
 
-const string SCHEDULE_NAME = "Schedule";
-const string TEACHERS_HOURS_NAME = "ListLesson";
+const string SCHEDULE_NAME = "../data/Schedule";
+const string TEACHERS_HOURS_NAME = "../data/ListLesson";
+const string DAY_OFF = "../data/DayOff";
 constexpr long long INF = 1e18;
 
 
-constexpr long long INTERSECT = 1e9;
-constexpr long long SKIP = 4e6;
-
+constexpr long long INTERSECT = 1e11;
+constexpr long long SKIP = 1e5;
+constexpr long long DAY_OFF_COST = 1e7;
 const map<int, vector<set<int> > > lessonToGroups = {
     {1, {{21, 22}}},
     {2, {{15, 16}, {18, 19}, {0, 3, 4}, {1, 2}, {5, 6, 7}, {8, 9}, {10, 11}, {12, 13}}},
@@ -38,6 +39,22 @@ const map<int, vector<set<int> > > lessonToGroups = {
     {17, {{0, 1}, {10, 11}, {12, 13}}},
     {20, {{15, 17}, {16, 18}, {20, 21, 22, 23, 24}, {0, 1}, {2, 3}, {5, 7}, {8, 9}, {10, 11}}}
 };
+map<int, vector<bool> > dayOff;
+
+
+void setDayOff() {
+    ifstream fin(DAY_OFF + ".txt");
+    int teacher;
+    while (fin >> teacher) {
+        dayOff[teacher].resize(TOTAL_LESSONS, 0);
+        for (int i = 0; i < TOTAL_LESSONS; i++) {
+            int h;
+            fin >> h;
+            if (h == -1) break;
+            dayOff[teacher][i] = h;
+        }
+    }
+}
 
 class Lesson {
 public:
@@ -169,6 +186,16 @@ public:
                 }
             }
         }
+
+        for (int i = 0; i < TOTAL_CLASSES; ++i) {
+            for (int j = 0; j < TOTAL_LESSONS; ++j) {
+                for (int teacher: matrix[i][j].teachers) {
+                    if (!dayOff[teacher][j]) {
+                        cost += DAY_OFF_COST;
+                    }
+                }
+            }
+        }
         for (int i = 0; i < TOTAL_CLASSES; ++i) {
             map<Lesson, int> col;
             for (int j = 0; j < TOTAL_LESSONS; ++j) {
@@ -207,13 +234,10 @@ public:
             for (int j = 0; j < DAYS_PER_WEEK; ++j) {
                 for (int k = 0; k < LESSONS_PER_DAY; ++k) {
                     Lesson f = matrix[i][j * LESSONS_PER_DAY + k];
-                    if (j != 5 && f.teachers.empty() && k <= 5) {
+                    if (f.teachers.empty() && k < 5) {
                         cost += SKIP;
                     }
                     if (j == 5) {
-                        if (f.teachers.empty() && k < 4) {
-                            cost += 40000;
-                        }
                         if (!f.teachers.empty() && k >= 6) {
                             cost += INTERSECT;
                         }
@@ -235,13 +259,14 @@ public:
                               lesson);
                     }
                     if (f.lesson == 6) {
-                        cost += (1 - b) * 1e6;
+                        cost += (1 - b) * SKIP;
                     }
-                    if (f.lesson == 5) {
-                        cost += (1 - b) * 2e5;
-                    }
-                    if (f.lesson == 1 || f.lesson == 20) {
-                        cost += (1 - b) * 5000;
+                    // if (f.lesson == 5) {
+                    //     cost += (1 - b) * 2e5;
+                    // }
+                    //f.lesson == 1 ||
+                    if (f.lesson == 20) {
+                        cost += (1 - b) * 50000;
                     }
                 }
             }
@@ -249,7 +274,7 @@ public:
     }
 
     void print() const {
-        ofstream fout("../data/" + SCHEDULE_NAME + ".txt");
+        ofstream fout(SCHEDULE_NAME + ".txt");
         for (int i = 0; i < TOTAL_CLASSES; ++i) {
             for (int j = 0; j < TOTAL_LESSONS; ++j) {
                 fout << matrix[i][j].teachers.size() << ' ';
@@ -263,7 +288,7 @@ public:
     }
 
     void read() {
-        ifstream fin("../data/" + SCHEDULE_NAME + ".txt");
+        ifstream fin(SCHEDULE_NAME + ".txt");
         int subject, Class, dop;
         for (int i = 0; i < TOTAL_CLASSES; ++i) {
             for (int j = 0; j < TOTAL_LESSONS; ++j) {
@@ -280,7 +305,7 @@ public:
     }
 
     void readNew() {
-        ifstream fin("../data/" + TEACHERS_HOURS_NAME + ".txt");
+        ifstream fin(TEACHERS_HOURS_NAME + ".txt");
         vector<Lesson> rubish;
         map<int, vector<vector<int> > > group;
         map<int, vector<set<int> > > teachers;
@@ -384,8 +409,7 @@ public:
         }
     }
 
-private
-:
+private:
     static int classToIndx(string s) {
         int clas = 0, num = int(s[s.size() - 1] - '0');
         if (s.size() == 4) {

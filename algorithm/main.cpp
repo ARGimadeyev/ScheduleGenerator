@@ -1,7 +1,8 @@
 // #pragma GCC optimize("Ofast, unroll-loops")
 #include <bits/stdc++.h>
 #include "lib/scheduler.h"
-
+#include "rapidjson/document.h"
+ #include "rapidjson/istreamwrapper.h"
 using namespace std;
 
 using ll = long long;
@@ -15,10 +16,11 @@ ld rnd() {
     return ld(rng()) / (UINT_MAX);
 }
 
-constexpr double COOLING_RATE = 0.999994;
+constexpr double COOLING_RATE = 0.99998;
 constexpr double MIN_COOL = 1e-2;
 
 int main() {
+    setDayOff();
     cout << "Hello!\n";
     cout << "If you want to improve the schedule you have already created (without intersections), enter: 1" << endl;
     Schedule now;
@@ -32,7 +34,7 @@ int main() {
     now.recnt();
     Schedule best = now;
 
-    ld T = 1'000'000'000;
+    ld T = 10'000'000;
 
     for (int k = 0; T >= MIN_COOL; T *= COOLING_RATE, k++) {
         Schedule nw = now;
