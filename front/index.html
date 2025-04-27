@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Расписание</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header class="main-header" id="mainHeader">
+    <h1>РАСПИСАНИЕ</h1>
+</header>
+
+<main class="content" id="mainContent">
+    <a href="pages/schedule.html" class="general-button">ОБЩЕЕ РАСПИСАНИЕ</a>
+    <div class="classes-grid" id="classesGrid"></div>
+</main>
+
+<!-- Кнопка гамбургер -->
+<div class="hamburger" id="hamburger">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div>
+
+<!-- Боковая панель -->
+<nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <a href="pages/teachers/all_teachers.html" class="teacher-general-btn">
+            ОБЩЕЕ РАСПИСАНИЕ УЧИТЕЛЕЙ
+        </a>
+    </div>
+    <div class="teachers-list" id="teachersList"></div>
+</nav>
+
+<script src="js/main.js"></script>
+</body>
+</html>

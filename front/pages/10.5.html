@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+        .class-table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            width: 90%;
+        }
+        .class-table td, .class-table th {
+            border: 2px solid #ffffff;
+            padding: 12px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+            min-width: 100px;
+            height: 60px;
+        }
+        .subject {
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .teachers {
+            font-size: 12px;
+            color: #444;
+            letter-spacing: -0.5px;
+        }
+        td[data-has-content="true"]:hover {
+    transform: scale(1.6); /* Уменьшили масштаб */
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Увеличили время анимации */
+}
+        td:not([data-has-content="true"]) {
+            cursor: default;
+        }
+        .full-info {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            z-index: 200;
+            min-width: 200px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        td:hover .full-info {
+            display: block;
+        }
+        .day-header {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+ </style>
+</head>
+<body>
+    <a href="../index.html" class="back-button">← Назад</a>
+    <h2 style="margin: 30px auto; text-align: center;">Класс 10.5</h2>
+<table class="class-table">
+<tr><th class="day-header">День</th><th class="day-header">Урок 1</th><th class="day-header">Урок 2</th><th class="day-header">Урок 3</th><th class="day-header">Урок 4</th><th class="day-header">Урок 5</th><th class="day-header">Урок 6</th><th class="day-header">Урок 7</th><th class="day-header">Урок 8</th><th class="day-header">Урок 9</th></tr>
+<tr><td class="day-header">День 1</td>
+                <td style="background-color:#BAE1FF" data-has-content="true">
+                    <div class="subject">Инф</div>
+                    <div class="teachers">ЛСЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Информатика</div>
+                        <div style="font-size:14px;color:#666;">Л.С.Латыпова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAE1FF" data-has-content="true">
+                    <div class="subject">Инф</div>
+                    <div class="teachers">ЛСЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Информатика</div>
+                        <div style="font-size:14px;color:#666;">Л.С.Латыпова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#B0E0E6" data-has-content="true">
+                    <div class="subject">Физ-ра</div>
+                    <div class="teachers">ТНЯ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физическая культура</div>
+                        <div style="font-size:14px;color:#666;">Т.Н. Яшина</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#D0BAFF" data-has-content="true">
+                    <div class="subject">VR</div>
+                    <div class="teachers">ИИЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Vr</div>
+                        <div style="font-size:14px;color:#666;">И.И.Латыпов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFDFBA" data-has-content="true">
+                    <div class="subject">Род.яз</div>
+                    <div class="teachers">ЛЮК ВЭЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Родной язык</div>
+                        <div style="font-size:14px;color:#666;">Л.Ю.Калимуллина, В.Э.Латыпова</div>
+                    </div>
+                </td>
+                </tr>
+<tr><td class="day-header">День 2</td>
+                <td style="background-color:#FFFFBA" data-has-content="true">
+                    <div class="subject">Англ</div>
+                    <div class="teachers">ЕПМ ЛГГ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Английский язык</div>
+                        <div style="font-size:14px;color:#666;">Е.П. Миронова, Л.Г. Габайдулина</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#98FB98" data-has-content="true">
+                    <div class="subject">Физ</div>
+                    <div class="teachers">МЮЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физика</div>
+                        <div style="font-size:14px;color:#666;">М.Ю. Ляшко</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#DEB887" data-has-content="true">
+                    <div class="subject">ОБЖ</div>
+                    <div class="teachers">АМК</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Обж</div>
+                        <div style="font-size:14px;color:#666;">А.М. Куликов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#F0E68C" data-has-content="true">
+                    <div class="subject">Гео</div>
+                    <div class="teachers">ШАГ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">География</div>
+                        <div style="font-size:14px;color:#666;">Шакирзянов А.Г.</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#98FB98" data-has-content="true">
+                    <div class="subject">Физ</div>
+                    <div class="teachers">МЮЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физика</div>
+                        <div style="font-size:14px;color:#666;">М.Ю. Ляшко</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#98FB98" data-has-content="true">
+                    <div class="subject">Физ</div>
+                    <div class="teachers">МЮЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физика</div>
+                        <div style="font-size:14px;color:#666;">М.Ю. Ляшко</div>
+                    </div>
+                </td>
+                <td style="background-color:#f8f9fa">-</td><td style="background-color:#f8f9fa">-</td>
+                <td style="background-color:#FFFFBA" data-has-content="true">
+                    <div class="subject">Англ</div>
+                    <div class="teachers">ЕПМ ЛГГ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Английский язык</div>
+                        <div style="font-size:14px;color:#666;">Е.П. Миронова, Л.Г. Габайдулина</div>
+                    </div>
+                </td>
+                </tr>
+<tr><td class="day-header">День 3</td>
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#C7CEEA" data-has-content="true">
+                    <div class="subject">Общество</div>
+                    <div class="teachers">РКА</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Обществознание</div>
+                        <div style="font-size:14px;color:#666;">Р.К.Аглямзянов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#B5EAD7" data-has-content="true">
+                    <div class="subject">Ист</div>
+                    <div class="teachers">РКА</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">История</div>
+                        <div style="font-size:14px;color:#666;">Р.К.Аглямзянов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFDFBA" data-has-content="true">
+                    <div class="subject">Род.яз</div>
+                    <div class="teachers">ЛЮК ВЭЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Родной язык</div>
+                        <div style="font-size:14px;color:#666;">Л.Ю.Калимуллина, В.Э.Латыпова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#F5DEB3" data-has-content="true">
+                    <div class="subject">Проект</div>
+                    <div class="teachers">В4</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Индивидуальный проект</div>
+                        <div style="font-size:14px;color:#666;">Вакансия 4</div>
+                    </div>
+                </td>
+                <td style="background-color:#f8f9fa">-</td></tr>
+<tr><td class="day-header">День 4</td>
+                <td style="background-color:#B5EAD7" data-has-content="true">
+                    <div class="subject">Ист</div>
+                    <div class="teachers">РКА</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">История</div>
+                        <div style="font-size:14px;color:#666;">Р.К.Аглямзянов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#C7CEEA" data-has-content="true">
+                    <div class="subject">Общество</div>
+                    <div class="teachers">РКА</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Обществознание</div>
+                        <div style="font-size:14px;color:#666;">Р.К.Аглямзянов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#D0BAFF" data-has-content="true">
+                    <div class="subject">VR</div>
+                    <div class="teachers">ИИЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Vr</div>
+                        <div style="font-size:14px;color:#666;">И.И.Латыпов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFB3BA" data-has-content="true">
+                    <div class="subject">РиЛ</div>
+                    <div class="teachers">БДИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Русский и литература</div>
+                        <div style="font-size:14px;color:#666;">Биккенина Д.И.</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFB3BA" data-has-content="true">
+                    <div class="subject">РиЛ</div>
+                    <div class="teachers">БДИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Русский и литература</div>
+                        <div style="font-size:14px;color:#666;">Биккенина Д.И.</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFB3BA" data-has-content="true">
+                    <div class="subject">РиЛ</div>
+                    <div class="teachers">БДИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Русский и литература</div>
+                        <div style="font-size:14px;color:#666;">Биккенина Д.И.</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAFFC9" data-has-content="true">
+                    <div class="subject">Матем</div>
+                    <div class="teachers">ФГИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Математика</div>
+                        <div style="font-size:14px;color:#666;">Ф.Г.Искакова</div>
+                    </div>
+                </td>
+                </tr>
+<tr><td class="day-header">День 5</td>
+                <td style="background-color:#98FB98" data-has-content="true">
+                    <div class="subject">Физ</div>
+                    <div class="teachers">МЮЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физика</div>
+                        <div style="font-size:14px;color:#666;">М.Ю. Ляшко</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#98FB98" data-has-content="true">
+                    <div class="subject">Физ</div>
+                    <div class="teachers">МЮЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физика</div>
+                        <div style="font-size:14px;color:#666;">М.Ю. Ляшко</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#B0E0E6" data-has-content="true">
+                    <div class="subject">Физ-ра</div>
+                    <div class="teachers">ТНЯ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физическая культура</div>
+                        <div style="font-size:14px;color:#666;">Т.Н. Яшина</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#98FB98" data-has-content="true">
+                    <div class="subject">Физ</div>
+                    <div class="teachers">МЮЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физика</div>
+                        <div style="font-size:14px;color:#666;">М.Ю. Ляшко</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#E6E6FA" data-has-content="true">
+                    <div class="subject">Био</div>
+                    <div class="teachers">НГМ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Биология</div>
+                        <div style="font-size:14px;color:#666;">Н.Г. Мирсаитов</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFB3BA" data-has-content="true">
+                    <div class="subject">РиЛ</div>
+                    <div class="teachers">БДИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Русский и литература</div>
+                        <div style="font-size:14px;color:#666;">Биккенина Д.И.</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFB3BA" data-has-content="true">
+                    <div class="subject">РиЛ</div>
+                    <div class="teachers">БДИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Русский и литература</div>
+                        <div style="font-size:14px;color:#666;">Биккенина Д.И.</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFB3BA" data-has-content="true">
+                    <div class="subject">РиЛ</div>
+                    <div class="teachers">БДИ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Русский и литература</div>
+                        <div style="font-size:14px;color:#666;">Биккенина Д.И.</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFD8B1" data-has-content="true">
+                    <div class="subject">Хим</div>
+                    <div class="teachers">ЕОМ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Химия</div>
+                        <div style="font-size:14px;color:#666;">Е.О Массарова</div>
+                    </div>
+                </td>
+                </tr>
+<tr><td class="day-header">День 6</td>
+                <td style="background-color:#FFFFBA" data-has-content="true">
+                    <div class="subject">Англ</div>
+                    <div class="teachers">ЕПМ ЛГГ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Английский язык</div>
+                        <div style="font-size:14px;color:#666;">Е.П. Миронова, Л.Г. Габайдулина</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#FFFFBA" data-has-content="true">
+                    <div class="subject">Англ</div>
+                    <div class="teachers">ЕПМ ЛГГ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Английский язык</div>
+                        <div style="font-size:14px;color:#666;">Е.П. Миронова, Л.Г. Габайдулина</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAE1FF" data-has-content="true">
+                    <div class="subject">Инф</div>
+                    <div class="teachers">ЛСЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Информатика</div>
+                        <div style="font-size:14px;color:#666;">Л.С.Латыпова</div>
+                    </div>
+                </td>
+                
+                <td style="background-color:#BAE1FF" data-has-content="true">
+                    <div class="subject">Инф</div>
+                    <div class="teachers">ЛСЛ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Информатика</div>
+                        <div style="font-size:14px;color:#666;">Л.С.Латыпова</div>
+                    </div>
+                </td>
+                <td style="background-color:#f8f9fa">-</td>
+                <td style="background-color:#B0E0E6" data-has-content="true">
+                    <div class="subject">Физ-ра</div>
+                    <div class="teachers">ТНЯ</div>
+                    <div class="full-info">
+                        <div style="font-size:16px;margin-bottom:6px;">Физическая культура</div>
+                        <div style="font-size:14px;color:#666;">Т.Н. Яшина</div>
+                    </div>
+                </td>
+                <td style="background-color:#f8f9fa">-</td><td style="background-color:#f8f9fa">-</td><td style="background-color:#f8f9fa">-</td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border-radius: 20px;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .back-button:hover {
+            transform: scale(1.05);
+        }
+        .teacher-table {
+            margin: 20px;
+            border-collapse: collapse;
+            font-family: Arial, sans-serif;
+            width: 90%;
+        }
+        .teacher-table td, .teacher-table th {
+            border: 2px solid #ffffff;
+            padding: 12px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+            min-width: 100px;
+            height: 60px;
+            background-color: #f8f9fa; /* Одинаковый фон для всех ячеек */
+        }
+        .class {
+            font-weight: 800;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .subject {
+            font-size: 12px;
+            color: #444;
+            letter-spacing: -0.5px;
+        }
+        td[data-has-content="true"]:hover {
+            transform: scale(1.8);
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            cursor: pointer;
+        }
+        td:not([data-has-content="true"]) {
+            cursor: default !important;
+        }
+        .full-info {
+            display: none;
+            position: absolute;
+            top: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            z-index: 200;
+            min-width: 200px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        td:hover .full-info {
+            display: block;
+        }
+        .day-header {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" class="back-button">← Назад</a>
+    <h2 style="margin:30px 0 10px 50px;">Е.Р.Авилова</h2><table class="teacher-table"><tr><th class="day-header">День</th><th class="day-header">Урок 1</th><th class="day-header">Урок 2</th><th class="day-header">Урок 3</th><th class="day-header">Урок 4</th><th class="day-header">Урок 5</th><th class="day-header">Урок 6</th><th class="day-header">Урок 7</th><th class="day-header">Урок 8</th><th class="day-header">Урок 9</th></tr><tr><td class="day-header">День 1</td><td>-</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(102, 70%, 80%)">8.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(102, 70%, 80%)">8.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td><td>-</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(16, 70%, 80%)">8.4</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.4</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(16, 70%, 80%)">8.4</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.4</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td><td>-</td></tr><tr><td class="day-header">День 2</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(239, 70%, 80%)">8.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(239, 70%, 80%)">8.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(274, 70%, 80%)">7.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(274, 70%, 80%)">7.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(274, 70%, 80%)">7.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td><td>-</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(102, 70%, 80%)">8.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                </tr><tr><td class="day-header">День 3</td><td>-</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(274, 70%, 80%)">7.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(274, 70%, 80%)">7.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(274, 70%, 80%)">7.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(0, 70%, 80%)">7.1</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.1</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(0, 70%, 80%)">7.1</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.1</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(0, 70%, 80%)">7.1</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.1</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td><td>-</td></tr><tr><td class="day-header">День 4</td><td>-</td><td>-</td><td>-</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(32, 70%, 80%)">10.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">10.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(32, 70%, 80%)">10.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">10.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(32, 70%, 80%)">10.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">10.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(16, 70%, 80%)">8.4</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.4</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(16, 70%, 80%)">8.4</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.4</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td></tr><tr><td class="day-header">День 5</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(32, 70%, 80%)">10.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">10.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(32, 70%, 80%)">10.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">10.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(32, 70%, 80%)">10.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">10.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(239, 70%, 80%)">8.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(0, 70%, 80%)">7.1</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.1</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(0, 70%, 80%)">7.1</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.1</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(0, 70%, 80%)">7.1</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">7.1</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td><td>-</td></tr><tr><td class="day-header">День 6</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(16, 70%, 80%)">8.4</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.4</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(239, 70%, 80%)">8.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(239, 70%, 80%)">8.3</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.3</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td>
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(102, 70%, 80%)">8.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                
+                <td data-has-content="true">
+                    <div class="class" style="color:hsl(102, 70%, 80%)">8.2</div><div class="subject">РиЛ</div>
+                    <div class="full-info">
+                        
+                        <div style="font-size:16px;margin-bottom:6px;">8.2</div>
+                        <div style="font-size:14px;color:#666;">Русский и литература</div>
+                    </div>
+                </td>
+                <td>-</td><td>-</td><td>-</td></tr></table>
+</body>
+</html>
