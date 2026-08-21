@@ -117,12 +117,6 @@
 - Разработчик: Гимадеев Амир Рамилевич  
 - GitHub: [https://github.com/ARGimadeyev/ScheduleGenerator](https://github.com/ARGimadeyev/ScheduleGenerator)  
 - Email: guesswho.a.x.a@gmail.com 
-
----
-
-**Подпись**: __________ / Гимадеев А.Р. /  
-**Дата**: __________  
-
 ---
 
 ### **Примечания**  
